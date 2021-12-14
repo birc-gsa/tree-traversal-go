@@ -7,6 +7,9 @@ jobs:
     name: Consistency testing Go code
     runs-on: ubuntu-latest
     steps:
+      - name: Checking out repository
+        uses: actions/checkout@v2
+
       - name: Building project
         uses: ./.github/actions/build
 
