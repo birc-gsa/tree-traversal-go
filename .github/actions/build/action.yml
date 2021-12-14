@@ -3,9 +3,18 @@ description: 'Setting up and building the project'
 runs:
   using: "composite"
   steps:
-    - name:  Configure Makefile
-      run:   cmake .
+    - name: "Get project code"
+      uses: actions/checkout@v2
+
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.17
+
+    - name: Build
+      run: go build -v ./...
+
+    - name: Install binaries
+      run: GOBIN=$PWD go install ./...
       shell: bash
-    - name:  Building project files
-      run:   make
-      shell: bash
+
