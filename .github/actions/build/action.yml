@@ -13,6 +13,7 @@ runs:
 
     - name: Build
       run: go build -v ./...
+      shell: bash
 
     - name: Install binaries
       run: GOBIN=$PWD go install ./...
